@@ -24,7 +24,7 @@ alias cp='cp -i'
 # check if administrative privileges are available
 is_administrator() {
     case "$(uname -s)" in
-        CYGWIN_*|MSYS_*)
+        CYGWIN_*|MSYS_*|MINGW64_*)
             net session >/dev/null 2>&1
             ;;
         *)
