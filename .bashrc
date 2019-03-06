@@ -82,6 +82,12 @@ if [ "$color_prompt" = yes ]; then
     if
         is_administrator
     then
+        administrator=true
+    fi
+
+    if
+        [ ! -z "$administrator" ]
+    then
         # \$ does not work on Windows
         prompt='#'
         prompt_colour=$txtred
@@ -102,7 +108,13 @@ if [ "$color_prompt" = yes ]; then
         [ ! -z "$SSH_CONNECTION" ] || [ ! -z "$SSH_CLIENT" ] || [ ! -z "$SSH_TTY" ]
     then
         # highlight the host for remote shell
-        host_colour=$bldred
+        if
+            [ ! -z "$administrator" ]
+        then
+            host_colour=$bldcyn
+        else
+            host_colour=$bldpur
+        fi
     else
         host_colour=$prompt_colour
     fi
@@ -159,7 +171,7 @@ __show_prompt() {
 
 PROMPT_COMMAND="__show_prompt \"$GIT_PS1_ARG1\" \"$GIT_PS1_ARG2\""
 unset color_prompt force_color_prompt wd_colour prompt_colour command_colour \
-    host_colour GIT_PS1_ARG1 GIT_PS1_ARG2
+    host_colour GIT_PS1_ARG1 GIT_PS1_ARG2 administrator
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
