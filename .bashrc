@@ -71,8 +71,10 @@ then
     . ~/.colours
 fi
 
-# Show the git dirty state in the prompt
-GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWDIRTYSTATE=1 # show unstaged and staged changes
+GIT_PS1_SHOWSTASHSTATE=1 # show existence of stashes
+GIT_PS1_SHOWUPSTREAM=auto # show upstream status
+GIT_PS1_HIDE_IF_PWD_IGNORED=1 # hide git prompt in ignored folder
 
 if [ "$color_prompt" = yes ]; then
     wd_colour=$bldblu
