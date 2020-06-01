@@ -47,6 +47,13 @@ This is sourced from `.bashrc` to provide useful aliases and shell functions.
 ### `.colours`
 This is sourced from `.bashrc` to define variables for colour escape sequences.
 
+## PowerShell
+### `.config/powershell/profile.ps1`
+The prompt is similar to the bash prompt as describe above, with the difference
+that $ or # is replaced by > multipled by the number of nested prompt.
+
+If posh-git is installed, it will be loaded to show git info.
+
 ## Vim
 
 ### `.vimrc`

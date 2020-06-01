@@ -1,9 +1,9 @@
 #!/bin/bash
 
-for file in .*
+for file in $(git ls-files)
 do
     if
-        [ -f "$file" ] && git ls-files "$file" --error-unmatch >/dev/null 2>&1
+        [[ "$file" == .* ]]
     then
         processed=
         while
@@ -18,7 +18,8 @@ do
             read command
             case "$command" in
                 copy)
-                    cp -v "$file" ~
+                    mkdir -p $(dirname ~/"$file")
+                    cp -v "$file" ~/"$file"
                     processed=true
                     ;;
                 skip)
