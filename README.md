@@ -6,8 +6,19 @@ This repository contains the custom configuration files for various programs
 These files are designed to be as portable as possible, which I am currently
 using on Debian, Ubuntu and Windows machines.
 
-## Bash
+## CMD
+### `autoexec.cmd`
+This provides a customized prompt with colours similar to the Bash prompt shown
+below, and with user name and host name prepended before the working directory.
 
+Add registry entry `HKCU\Software\Microsoft\Command Processor` with `AutoRun` as
+key, `REG_EXPAND_SZ` as type, and `%HOMEDRIVE%%HOMEPATH%\autoexec.cmd` as value
+to enable the script.
+
+### `colours.cmd`
+This is sourced from `autoexec.cmd` to provide colours
+
+## Bash
 ### `.bashrc`
 This is modified from the default .bashrc found on Ubuntu systems, which
 contains the following features.

@@ -3,7 +3,7 @@
 for file in $(git ls-files)
 do
     if
-        [[ "$file" == .* ]]
+        [[ "$file" == .* ]] || [[ "$file" == *.cmd ]]
     then
         processed=
         while
