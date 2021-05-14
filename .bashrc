@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-force_color_prompt=yes
+#force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -51,8 +51,6 @@ if [ -n "$force_color_prompt" ]; then
 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 	# a case would tend to support setf rather than setaf.)
 	color_prompt=yes
-    else
-	color_prompt=
     fi
 fi
 
@@ -76,22 +74,23 @@ GIT_PS1_SHOWSTASHSTATE=1 # show existence of stashes
 GIT_PS1_SHOWUPSTREAM=auto # show upstream status
 GIT_PS1_HIDE_IF_PWD_IGNORED=1 # hide git prompt in ignored folder
 
+if
+    is_administrator
+then
+    administrator=true
+    # \$ does not work on Windows
+    prompt='#'
+else
+    prompt='$'
+fi
+
 if [ "$color_prompt" = yes ]; then
     wd_colour=$bldblu
     GIT_PS1_SHOWCOLORHINTS=1
-    prompt='$'
-
-    if
-        is_administrator
-    then
-        administrator=true
-    fi
 
     if
         [ ! -z "$administrator" ]
     then
-        # \$ does not work on Windows
-        prompt='#'
         prompt_colour=$txtred
         command_colour=$bldpur
     elif
@@ -128,7 +127,7 @@ if [ "$color_prompt" = yes ]; then
     trap 'echo -ne "\e[0m"' DEBUG
 else
     GIT_PS1_ARG1="[\u@\h \w"
-    GIT_PS1_ARG2="$prompt ]"
+    GIT_PS1_ARG2="]$prompt "
 fi
 
 if
