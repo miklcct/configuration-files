@@ -94,8 +94,8 @@ if [ "$color_prompt" = yes ]; then
         prompt_colour=$txtred
         command_colour=$bldpur
     elif
-        # if the shell is running as another user
-        [ "$EUID" != "$(stat -c %u ~)" ]
+        # if the shell is started using sudo
+        [ "$EUID" != "$SUDO_UID" ]
     then
         prompt_colour=$txtylw
         command_colour=$bldwht
@@ -195,4 +195,8 @@ then
     fortune -a
 fi
 
-export HOME=$(eval echo ~$USER)
+if
+    [ "$USER" != "root" ]
+then
+    export HOME=$(eval echo ~$USER)
+fi

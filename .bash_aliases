@@ -21,9 +21,6 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
-# as sudo no longer preserves $HOME this wrapper loads shell with original $HOME
-alias sudosh='sudo --preserve-env=HOME -s'
-
 # check if administrative privileges are available
 is_administrator() {
     case "$(uname -s)" in
