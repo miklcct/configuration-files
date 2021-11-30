@@ -95,7 +95,7 @@ if [ "$color_prompt" = yes ]; then
         command_colour=$bldpur
     elif
         # if the shell is started using sudo
-        [ "$EUID" != "$SUDO_UID" ]
+        [ ! -z "$SUDO_UID" ] && [ "$EUID" != "$SUDO_UID" ]
     then
         prompt_colour=$txtylw
         command_colour=$bldwht
