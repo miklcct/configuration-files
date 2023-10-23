@@ -194,6 +194,11 @@ if
 then
     fortune -a
 fi
+if
+    which thefuck >/dev/null
+then
+    eval $(thefuck --alias)
+fi
 
 if
     [ "$USER" != "root" ]
