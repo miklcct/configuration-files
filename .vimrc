@@ -1,4 +1,6 @@
-source $VIMRUNTIME/vimrc_example.vim
+if !has('nvim')
+    source $VIMRUNTIME/vimrc_example.vim
+endif
 
 set tw=80 sw=4 sts=4 expandtab nu
 set encoding=utf-8
