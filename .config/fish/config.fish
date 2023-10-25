@@ -7,6 +7,7 @@ set fish_prompt_pwd_dir_length 0
 set -e fish_color_user
 set -e fish_color_host
 set fish_color_host_remote brpurple
+set fish_color_host_remote_root brcyan
 set fish_color_prompt green
 set fish_color_prompt_sudo yellow
 set fish_color_prompt_root red
