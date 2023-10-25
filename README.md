@@ -6,6 +6,9 @@ This repository contains the custom configuration files for various programs
 These files are designed to be as portable as possible, which I am currently
 using on Debian, Ubuntu and Windows machines.
 
+`install.sh` is a helper script to list and copy the available files.
+If run with the option `-a`, it will copy all available files automatically.
+
 ## CMD
 ### `autoexec.cmd`
 This provides a customized prompt with colours similar to the Bash prompt shown
