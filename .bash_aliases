@@ -21,14 +21,23 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
-# check if administrative privileges are available
-is_administrator() {
+is_windows() {
     case "$(uname -s)" in
         CYGWIN_*|MSYS_*|MINGW64_*)
-            net session >/dev/null 2>&1
+            return 0
             ;;
         *)
-            [ "$EUID" = 0 ]
+            return 1
             ;;
     esac
+}
+
+# check if administrative privileges are available
+is_administrator() {
+    if is_windows
+    then
+        net session >/dev/null 2>&1
+    else
+        [ "$EUID" = 0 ]
+    fi
 }

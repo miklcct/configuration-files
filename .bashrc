@@ -160,11 +160,14 @@ if
     ! type __git_ps1 >/dev/null 2>&1
 then
     # attempt to load __git_ps1 from ~/.git-prompt.sh
-    if
-        [ -f ~/.git-prompt.sh ] && [ -r ~/.git-prompt.sh ]
-    then
-        . ~/.git-prompt.sh
-    fi
+    for file in ~/.git-prompt.sh /etc/profile.d/git-prompt.sh "$(dirname "$(which git)")/../etc/profile.d/git-prompt.sh"
+    do
+        if
+            [ -f "$file" ] && [ -r "$file" ]
+        then
+        . "$file"
+        fi
+    done
 fi
 
 if

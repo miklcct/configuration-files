@@ -1,9 +1,12 @@
 #!/bin/bash
 
+cd -- "$( dirname -- "${BASH_SOURCE[0]}" )"
+. .bash_aliases
+
 for file in $(git ls-files)
 do
     if
-        [[ "$file" == .* ]] || [[ "$file" == *.cmd ]]
+        [[ "$file" == .* ]] || (is_windows && ([[ "$file" == *.cmd ]] || [[ "$file" == AppData/* ]]))
     then
         processed=
         while
