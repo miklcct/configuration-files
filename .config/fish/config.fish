@@ -14,6 +14,10 @@ set fish_color_cwd brblue
 set -e fish_color_cwd_sudo
 set -e fish_color_cwd_root
 
+abbr --add rm "rm -i"
+abbr --add cp "cp -i"
+abbr --add mv "mv -i"
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
