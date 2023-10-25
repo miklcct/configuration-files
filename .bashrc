@@ -84,6 +84,15 @@ else
     prompt='$'
 fi
 
+get_exit_status() {
+    exit_status=("${PIPESTATUS[@]}")
+    if [[ ${exit_status[-1]} != 0 ]]
+    then
+        IFS='|'
+        echo " $1[${exit_status[*]}]"
+    fi
+}
+
 if [ "$color_prompt" = yes ]; then
     wd_colour=$bldblu
     GIT_PS1_SHOWCOLORHINTS=1
@@ -120,14 +129,24 @@ if [ "$color_prompt" = yes ]; then
         host_colour=$prompt_colour
     fi
 
+
     GIT_PS1_ARG1="\[$prompt_colour\][\u@\[$host_colour\]\h \[$wd_colour\]\w\[$txtrst\]"
-    GIT_PS1_ARG2="\[$prompt_colour\]]$prompt \[$command_colour\]"
+    exit_status='$(get_exit_status $txtred)'
+    GIT_PS1_ARG2="$exit_status\[$prompt_colour\]]$prompt \[$command_colour\]"
 
     # reset the colour after entering the prompt
     trap 'echo -ne "\e[0m"' DEBUG
 else
     GIT_PS1_ARG1="[\u@\h \w"
-    GIT_PS1_ARG2="]$prompt "
+    get_exit_status() {
+        exit_status=$?
+        if [[ $exit_status != 0 ]]
+        then
+            echo " [$exit_status]"
+        fi
+    }
+    exit_status='$(get_exit_status)'
+    GIT_PS1_ARG2="$exit_status]$prompt "
 fi
 
 if
