@@ -58,6 +58,46 @@ This is sourced from `.bashrc` to provide useful aliases and shell functions.
 ### `.colours`
 This is sourced from `.bashrc` to define variables for colour escape sequences.
 
+## Fish
+### `.config/fish/functions/{fish_prompt,prompt_login,prompt_chroot}.fish
+The prompt is similar to the bash prompt as describe above, with the difference
+that $ is replaced by > when running as non-administrator.
+
+#### Customisation of colours
+The prompt above uses some variables which can be used to configure the colours:
+
+* `fish_color_prompt`: The prompt colour when running as a normal user. Set to
+  `green` in `config.fish`.
+* `fish_color_prompt_sudo`: The prompt colour when running as another user via
+  sudo. Set to `yellow` in `config.fish`.
+* `fish_color_prompt_root`: The prompt colour when running as root. Set to `red`
+  in `config.fish`.
+* `fish_color_cwd`: The cwd colour when running as a normal user. Set to
+  `brblue` in `config.fish`.
+* `fish_color_cwd_sudo`: The cwd colour when running as another user via sudo.
+  Unset in `config.fish`.
+* `fish_color_cwd_root`: The cwd colour when running as another user via root.
+  Unset in `config.fish`.
+* `fish_color_status`: The colour to show the status code of the last command.
+  Defaults to `red`.
+* `fish_color_chroot`: The colour to show the chroot. Defaults to `yellow`.
+* `fish_color_user`: The colour to show the user name. Unset in `config.fish`.
+* `fish_color_host`: The colour to show the host name. Unset in `config.fish`.
+* `fish_color_host_root`: The colour to show the host name. If not set use
+  `fish_color_host`. Unset in `config.fish`.
+* `fish_color_host_remote`: The colour to show the host name. If not set use 
+  `fish_color_host`. Unset in `config.fish`.
+* `fish_color_host_remote_root`: The colour to show the host name. If not set 
+  use `fish_color_host_remote`, `fish_color_host_root`, `fish_color_host` in 
+  order. Unset in `config.fish`.
+
+### `.config/fish/config.fish`
+This provides some customisations of the prompt
+
+### `.config/fish/functions/fish_is_root_user.fish
+This overrides the default function to provide better detection for
+administrator rights on Windows systems.
+
 ## PowerShell
 ### `.config/powershell/profile.ps1`
 The prompt is similar to the bash prompt as describe above, with the difference
