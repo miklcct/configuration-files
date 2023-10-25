@@ -134,7 +134,7 @@ if
     [ ! -z "$debian_chroot" ]
 then
     # prepend the chroot if running inside
-    GIT_PS1_ARG1="($debian_chroot) $GIT_PS1_ARG1"
+    GIT_PS1_ARG1="$txtylw(chroot:$debian_chroot)$txtrst $GIT_PS1_ARG1"
 fi
 
 if
@@ -193,11 +193,6 @@ if
     type fortune > /dev/null 2>&1
 then
     fortune -a
-fi
-if
-    which thefuck >/dev/null
-then
-    eval $(thefuck --alias)
 fi
 
 if
