@@ -19,7 +19,7 @@ function fish_prompt --description 'Write out the prompt'
             set color_prompt $fish_color_prompt_root
         end
         set suffix '#'
-    else if set -q SUDO_UID && test $EUID != $SUDO_UID
+    else if set -q SUDO_UID && test (id -u) != $SUDO_UID
         if set -q fish_color_cwd_sudo
             set color_cwd $fish_color_cwd_sudo
         end

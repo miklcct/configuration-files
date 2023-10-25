@@ -1,12 +1,13 @@
 # Defined in /usr/share/fish/functions/prompt_login.fish @ line 1
 function prompt_login --description 'display user name for the prompt'
     set -l initial $argv[1]
+    set -l __is_root ''
     if functions -q fish_is_root_user; and fish_is_root_user
-        set -f __is_root
+        set __is_root true
     end
     # If we're running via SSH, change the host color.
     set -l color_host $fish_color_host
-    if set -e __is_root
+    if test $__is_root = true
         set color_host $fish_color_host_root
     end
     if set -q SSH_TTY; and set -q fish_color_host_remote
