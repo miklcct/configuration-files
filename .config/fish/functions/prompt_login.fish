@@ -12,7 +12,7 @@ function prompt_login --description 'display user name for the prompt'
     end
     if set -q SSH_TTY; and set -q fish_color_host_remote
         set color_host $fish_color_host_remote
-        if set -e __is_root
+        if test $__is_root = true
             if set -q fish_color_host_remote_root
                 set color_host $fish_color_host_remote_root
             end

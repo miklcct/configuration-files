@@ -217,8 +217,4 @@ then
     fortune -a
 fi
 
-if
-    [ "$USER" != "root" ]
-then
-    export HOME=$(eval echo ~$USER)
-fi
+true
