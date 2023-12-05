@@ -40,5 +40,5 @@ function fish_prompt --description 'Write out the prompt'
     set -l statusb_color (set_color $bold_flag $fish_color_status)
     set -l prompt_status (__fish_print_pipestatus " [" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
 
-    echo -n -s (prompt_chroot) (set_color $color_prompt) '[' (prompt_login $color_prompt) ' ' (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal $prompt_status (set_color $color_prompt) ']' $suffix " " $normal
+    echo -n -s (prompt_chroot) (set_color $color_prompt) '[' (prompt_login $color_prompt) (set_color $color_prompt) ' ' (set_color --bold $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal $prompt_status (set_color $color_prompt) ']' $suffix " " $normal
 end
