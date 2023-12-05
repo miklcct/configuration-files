@@ -15,7 +15,7 @@ function prompt {
 
     Write-Host -NoNewLine -ForegroundColor $wd_colour $currentPath
     if (Get-Module -ListAvailable -Name posh-git) {
-        Write-VcsStatus
+        Write-Host -NoNewLine (Write-VcsStatus)
     }
     Write-Host -NoNewline -ForegroundColor $prompt_colour "]"
     Write-Host -NoNewline -ForegroundColor $prompt_colour ('>' * ($nestedPromptLevel + 1))
