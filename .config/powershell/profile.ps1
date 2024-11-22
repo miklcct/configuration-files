@@ -37,4 +37,10 @@ if ($administrator) {
 }
 $wd_colour = [ConsoleColor]::Blue
 Set-PSReadLineOption -colors @{Command = $command_colour}
-Import-Module posh-git
+
+if (Get-Module -ListAvailable -Name posh-git) {
+    Import-Module posh-git
+}
+if (Get-Command fnm -errorAction SilentlyContinue) {
+    fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
+}

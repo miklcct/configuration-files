@@ -210,6 +210,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# fnm
+if
+    type fnm > /dev/null 2>&1
+then
+    eval "$(fnm env --use-on-cd --shell bash)"
+fi
+
 # Have some fun
 if
     type fortune > /dev/null 2>&1
